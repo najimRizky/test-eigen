@@ -1,0 +1,25 @@
+# Logs
+fe-test-eigen/logs
+fe-test-eigen/*.log
+fe-test-eigen/npm-debug.log*
+fe-test-eigen/yarn-debug.log*
+fe-test-eigen/yarn-error.log*
+fe-test-eigen/pnpm-debug.log*
+fe-test-eigen/lerna-debug.log*
+
+fe-test-eigen/node_modules
+fe-test-eigen/dist
+fe-test-eigen/dist-ssr
+fe-test-eigen/*.local
+fe-test-eigen/package-lock.json
+
+# Editor directories and files
+fe-test-eigen/.vscode/*
+fe-test-eigen/!.vscode/extensions.json
+fe-test-eigen/.idea
+fe-test-eigen/.DS_Store
+fe-test-eigen/*.suo
+fe-test-eigen/*.ntvs*
+fe-test-eigen/*.njsproj
+fe-test-eigen/*.sln
+fe-test-eigen/*.sw?
