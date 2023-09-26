@@ -1,9 +1,18 @@
 import Routes from './components/modules/Routes'
+import { ConfigProvider } from 'antd'
 
 function App() {
   return (
     <>
-      <Routes />
+      <ConfigProvider
+        theme={{
+          token: {
+            fontFamily: 'Nunito, sans-serif'
+          }
+        }}
+      >
+        <Routes />
+      </ConfigProvider>
     </>
   )
 }

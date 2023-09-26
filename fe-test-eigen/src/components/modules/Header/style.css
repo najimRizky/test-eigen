@@ -1,0 +1,19 @@
+.navbar header{
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .brand{
+  color: #333;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.navbar .menu{
+  font-size: 1rem;
+}

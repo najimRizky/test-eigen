@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import BaseLayout from "../BaseLayout"
+import HomePage from "../../pages"
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -9,11 +10,15 @@ const Routes = () => {
       children: [
         {
           index: true,
-          element: <div>Home</div>
+          element: <HomePage />
         },
         {
-          path: "about",
-          element: <div>About</div>
+          path: "everything",
+          element: <div>Everything</div>
+        },
+        {
+          path: "top-headlines",
+          element: <div>Top Headlines</div>
         }
       ]
     }
