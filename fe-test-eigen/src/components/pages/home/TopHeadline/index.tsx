@@ -27,7 +27,6 @@ const TopHeadline = () => {
   }
 
   const renderList = () => {
-    console.log(loading)
     if (loading) return (
       <Space direction="vertical" size={"large"} className="w-full">
         {Array(10).fill(0).map((_, id) =>
@@ -59,6 +58,7 @@ const TopHeadline = () => {
         size={"large"}
         className="w-full"
         style={{ justifyContent: "space-between" }}
+        wrap={true}
       >
         <SectionTitle
           title="Top Headline"
