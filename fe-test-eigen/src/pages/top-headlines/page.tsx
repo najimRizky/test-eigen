@@ -29,13 +29,17 @@ const TopHeadlinesPage = () => {
 
   const handleChangeParams = (key: "country" | "category" | "page", value: string) => {
     if (params[key] === value) return
-    setSearchParams({
-      ...searchParams,
-      [key]: value
-    })
+
+    if (key !== "page") {
+      searchParams.delete("page")
+      params.page = 1
+    }
+
+    searchParams.set(key, value)
+    setSearchParams(searchParams)
     setParams({
       ...params,
-      [key]: value
+      [key]: value,
     })
     window.scrollTo(0, 0)
   }
@@ -63,7 +67,7 @@ const TopHeadlinesPage = () => {
         <Pagination
           onChange={(page) => handleChangeParams("page", page.toString())}
           style={{ display: "flex", justifyContent: "center" }}
-          current={response.metadata.page} 
+          current={response.metadata.page}
           total={response.metadata.totalElement}
           pageSize={Number(import.meta.env.VITE_SIZE_PER_PAGE)}
         />

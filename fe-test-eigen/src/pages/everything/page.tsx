@@ -41,14 +41,19 @@ const EverythingPage = () => {
 
   const handleChangeParams = (key: "page" | "q", value: string) => {
     if (params[key] === value) return
-    setSearchParams({
-      ...searchParams,
-      [key]: value
-    })
+
+    if (key !== "page") {
+      searchParams.delete("page")
+      params.page = 1
+    }
+
+    searchParams.set(key, value)
+    setSearchParams(searchParams)
     setParams({
       ...params,
-      [key]: value
+      [key]: value,
     })
+    
     window.scrollTo(0, 0)
   }
 
