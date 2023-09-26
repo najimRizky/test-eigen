@@ -24,8 +24,7 @@ const Header = () => {
             items={pageRoutes.map((route) => (
               {
                 key: route.path,
-                // label: <NavLink to={route.path}>{route.name}</NavLink>
-                label: route.name
+                label: <NavLink to={route.path}>{route.name}</NavLink>
               }
             ))}
           />
