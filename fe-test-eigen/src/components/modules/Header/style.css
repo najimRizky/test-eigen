@@ -15,6 +15,21 @@
   font-weight: 700;
 }
 
-.navbar .menu{
+.navbar .desktop-menu{
   font-size: 1rem;
+}
+
+.navbar .mobile-menu-button{
+  display: none;
+  margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .navbar .desktop-menu{
+    display: none;
+  }
+
+  .navbar .mobile-menu-button{
+    display: block;
+  }
 }
