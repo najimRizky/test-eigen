@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import BaseLayout from "../BaseLayout"
-import HomePage from "../../../pages"
-import TopHeadlinesPage from "../../../pages/top-headlines"
-import EverythingPage from "../../../pages/everything"
+import HomePage from "../../../pages/page"
+import TopHeadlinesPage from "../../../pages/top-headlines/page"
+import EverythingPage from "../../../pages/everything/page"
 
 const Routes = () => {
   const router = createBrowserRouter([
