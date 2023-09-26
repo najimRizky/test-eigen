@@ -22,7 +22,8 @@ const EverythingPage = () => {
 
   const { error, loading, response } = useGetRequest({
     url: apiPath.everything,
-    queryParams: params
+    queryParams: params,
+    requiredParams: ["q"]
   })
 
   const handleChangeSearchKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,6 +62,11 @@ const EverythingPage = () => {
     )
 
     if (error) return <div>Something Went Wrong</div>
+    if (params.q === "") return (
+      <p>
+        Please search for a keyword
+      </p>
+    )
     if (!response?.data?.articles?.length) return <div>Data Not Found</div>
 
     return (
@@ -85,33 +91,37 @@ const EverythingPage = () => {
   return (
     <div className="container">
       <Space direction="vertical" size={"large"} className="w-full">
-        <Space
-          direction="horizontal"
-          align="center"
-          size={"large"}
+        <div
           className="w-full"
-          style={{ justifyContent: "space-between" }}
+          style={{
+            justifyContent: "space-between",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+            gap: "1.5rem",
+            flexWrap: "wrap"
+          }}
         >
           <SectionTitle
             title="Everything"
-            subtitle="Get all the articles about a topic by passing in relevant keywords, category, and country."
+            subtitle="Get all the articles about a topic by passing in relevant keywords."
             level={2}
           />
-        <Space direction="vertical" className="w-full">
           <Input.Search
+            loading={loading}
             placeholder="Search keyword"
             allowClear
-            style={{ flexGrow: 1 }}
             size="large"
             onChange={(e) => handleChangeSearchKeyword(e)}
+            style={{ width: "100%", maxWidth: 400 }}
+            value={keyword}
           />
-        </Space>
-        </Space>
+        </div>
 
         {useMemo(() => (
           renderList()
           // eslint-disable-next-line react-hooks/exhaustive-deps
-        ), [loading])}
+        ), [loading, response])}
       </Space>
     </div>
   )

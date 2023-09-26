@@ -5,12 +5,19 @@ import { useState, useEffect } from "react"
 // const API_URL = import.meta.env.VITE_API_URL
 const API_URL = window.location.origin
 
-const useGetRequest = ({ url, queryParams = {}, }: IUseGetRequest) => {
+const useGetRequest = ({ url, queryParams = {}, requiredParams = []}: IUseGetRequest) => {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<unknown>(null)
   const [response, setResponse] = useState<any>(null)
 
   const getData = async () => {
+    const missingParams = requiredParams.filter((param) => !queryParams[param])
+    if (missingParams.length > 0) {
+      setLoading(false)
+      setError(null)
+      setResponse(null)
+      return
+    }
     setLoading(true)
     const fixedUrl = new URL(url, API_URL)
     
