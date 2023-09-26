@@ -17,9 +17,6 @@ const useGetRequest = ({ url, queryParams = {}, }: IUseGetRequest) => {
     const params: Record<string, string | number | unknown> = {
       page: queryParams.page || 1,
       pageSize: queryParams.pageSize || 10,
-      country: queryParams.country || "id",
-      category: queryParams.category || "general",
-      q: queryParams.q || "",
       ...queryParams,
     }
 
@@ -31,6 +28,8 @@ const useGetRequest = ({ url, queryParams = {}, }: IUseGetRequest) => {
 
     if (res.error) {
       setError(res.error)
+    } else {
+      setError(null)
     }
 
     setLoading(false)

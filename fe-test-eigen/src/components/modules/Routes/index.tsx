@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import BaseLayout from "../BaseLayout"
 import HomePage from "../../../pages"
 import TopHeadlinesPage from "../../../pages/top-headlines"
+import EverythingPage from "../../../pages/everything"
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const Routes = () => {
         },
         {
           path: "everything",
-          element: <div>Everything</div>
+          element: <EverythingPage />
         },
       ]
     }
