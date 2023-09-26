@@ -6,6 +6,7 @@ const theme: ThemeConfig = {
     fontSizeHeading1: 28,
     fontSizeHeading2: 24,
     fontSizeHeading3: 20,
+    colorPrimary: '#13c2c2',
   }
 }
 

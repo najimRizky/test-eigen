@@ -8,7 +8,7 @@ const API_URL = window.location.origin
 const useGetRequest = ({ url, queryParams = {}, }: IUseGetRequest) => {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<unknown>(null)
-  const [response, setResponse] = useState<unknown>(null)
+  const [response, setResponse] = useState<any>(null)
 
   const getData = async () => {
     setLoading(true)

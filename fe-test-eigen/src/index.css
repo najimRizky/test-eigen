@@ -16,3 +16,12 @@
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.content {
+  margin: 2rem 0;
+}
