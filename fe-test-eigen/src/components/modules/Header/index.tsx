@@ -13,8 +13,8 @@ const Header = () => {
         </NavLink>
         <Menu
           mode="horizontal"
-          defaultSelectedKeys={[pathname]}
           className="menu"
+          selectedKeys={[pathname]}
           items={pageRoutes.map((route) => (
             {
               key: route.path,
