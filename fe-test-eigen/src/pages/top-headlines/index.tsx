@@ -80,6 +80,7 @@ const TopHeadlinesPage = () => {
           size={"large"}
           className="w-full"
           style={{ justifyContent: "space-between" }}
+          wrap={true}
         >
           <SectionTitle
             title="Top Headline"
