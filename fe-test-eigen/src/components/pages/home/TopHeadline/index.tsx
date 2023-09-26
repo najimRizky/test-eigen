@@ -1,35 +1,95 @@
 import { apiPath } from "../../../../config/apiPath"
 import useGetRequest from "../../../../hooks/useGetRequest"
-import { useState } from "react"
-import { Space } from "antd"
+import { useMemo, useState } from "react"
+import { Space, Select, Button } from "antd"
 import IArticle from "../../../../interfaces/Article"
 import CardArticle from "../../../modules/CardArticle"
 import CardArticleSkeleton from "../../../modules/CardArticle/skeleton"
+import countries from "../../../../config/countries"
+import { NavLink } from "react-router-dom"
+import SectionTitle from "../../../modules/SectionTitle"
 
 const TopHeadline = () => {
-  const [params] = useState({})
+  const [params, setParams] = useState({
+    country: "id",
+  })
+
   const { error, loading, response } = useGetRequest({
     url: apiPath.topHeadlines,
     queryParams: params
   })
 
-  if (loading) return (
-    <Space direction="vertical" size={"large"} style={{ width: "100%" }}>
-      {Array(10).fill(0).map((_, id) =>
-        <CardArticleSkeleton key={id} />
-      )}
-    </Space>
-  )
+  const onCountryChange = (value: string) => {
+    setParams({
+      ...params,
+      country: value
+    })
+  }
 
-  if (error) return <div>Something Went Wrong</div>
+  const renderList = () => {
+    console.log(loading)
+    if (loading) return (
+      <Space direction="vertical" size={"large"} className="w-full">
+        {Array(10).fill(0).map((_, id) =>
+          <CardArticleSkeleton key={id} />
+        )}
+      </Space>
+    )
+
+    if (error) return <div>Something Went Wrong</div>
+
+    return (
+      <Space direction="vertical" size={"large"} className="w-full" >
+        {response?.data?.articles?.map((article: IArticle, id: number) =>
+          <CardArticle
+            key={id}
+            article={article}
+          />
+        )}
+      </Space>
+    )
+  }
+
   return (
-    <Space direction="vertical" size={"large"} style={{ width: "100%" }}>
-      {response?.data?.articles?.map((article: IArticle, id: number) =>
-        <CardArticle
-          key={id}
-          article={article}
+    <Space direction="vertical" size={"large"} className="w-full">
+      <Space
+        direction="horizontal"
+        align="center"
+        size={"large"}
+        className="w-full"
+        style={{ justifyContent: "space-between" }}
+      >
+        <SectionTitle
+          title="Top Headline"
+          subtitle="Top Headline from Eigen News"
+          level={2}
         />
-      )}
+        <Space direction="vertical">
+          <p>Country:</p>
+          <Select
+            disabled={loading}
+            loading={loading}
+            showSearch
+            value={countries.find((country) => country.value === params.country)?.label}
+            optionFilterProp="children"
+            options={countries}
+            style={{ width: 180 }}
+            size="large"
+            onChange={(value) => onCountryChange(value)}
+            filterOption={(input, option) => (option?.label.toLowerCase() ?? '').includes(input.toLocaleLowerCase())}
+            filterSort={(optionA, optionB) => (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())}
+          />
+        </Space>
+      </Space>
+
+      {useMemo(() => (
+        renderList()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      ), [loading])}
+
+      <NavLink to={`/top-headlines?country=${params.country}`}>
+        <Button type="primary" size="large" block style={{ marginTop: "2rem" }}>See More</Button>
+      </NavLink>
     </Space>
   )
 }

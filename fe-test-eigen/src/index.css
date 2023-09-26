@@ -25,3 +25,7 @@ a {
 .content {
   margin: 2rem 0;
 }
+
+.w-full {
+  width: 100%;
+}
