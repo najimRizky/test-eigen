@@ -5,9 +5,9 @@ import { Space, Select, Button } from "antd"
 import IArticle from "../../../../interfaces/Article"
 import CardArticle from "../../../modules/CardArticle"
 import CardArticleSkeleton from "../../../modules/CardArticle/skeleton"
-import countries from "../../../../config/countries"
 import { NavLink } from "react-router-dom"
 import SectionTitle from "../../../modules/SectionTitle"
+import { COUNTRY_OPTIONS } from "../../../../config/options"
 
 const TopHeadline = () => {
   const [params, setParams] = useState({
@@ -37,6 +37,7 @@ const TopHeadline = () => {
     )
 
     if (error) return <div>Something Went Wrong</div>
+    if (!response?.data?.articles?.length) return <div>Data Not Found</div>
 
     return (
       <Space direction="vertical" size={"large"} className="w-full" >
@@ -70,9 +71,9 @@ const TopHeadline = () => {
             disabled={loading}
             loading={loading}
             showSearch
-            value={countries.find((country) => country.value === params.country)?.label}
+            value={COUNTRY_OPTIONS.find((country) => country.value === params.country)?.label}
             optionFilterProp="children"
-            options={countries}
+            options={COUNTRY_OPTIONS}
             style={{ width: 180 }}
             size="large"
             onChange={(value) => onCountryChange(value)}

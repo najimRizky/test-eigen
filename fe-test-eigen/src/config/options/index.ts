@@ -1,4 +1,4 @@
-const countries = [
+export const COUNTRY_OPTIONS = [
   { label: 'Australia', value: 'au' },
   { label: 'Belgium', value: 'be' },
   { label: 'Bulgaria', value: 'bg' },
@@ -51,4 +51,33 @@ const countries = [
   { label: 'Venezuela', value: 've' }
 ];
 
-export default countries;
+export const CATEGORY_OPTIONS = [
+  {
+    label: 'Business',
+    value: 'business'
+  },
+  {
+    label: 'Entertainment',
+    value: 'entertainment'
+  },
+  {
+    label: 'General',
+    value: 'general'
+  },
+  {
+    label: 'Health',
+    value: 'health'
+  },
+  {
+    label: 'Science',
+    value: 'science'
+  },
+  {
+    label: 'Sports',
+    value: 'sports'
+  },
+  {
+    label: 'Technology',
+    value: 'technology'
+  }
+]
