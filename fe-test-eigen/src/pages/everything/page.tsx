@@ -53,8 +53,6 @@ const EverythingPage = () => {
       ...params,
       [key]: value,
     })
-    
-    window.scrollTo(0, 0)
   }
 
   const renderList = () => {
