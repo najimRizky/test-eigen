@@ -23,3 +23,6 @@ fe-test-eigen/*.ntvs*
 fe-test-eigen/*.njsproj
 fe-test-eigen/*.sln
 fe-test-eigen/*.sw?
+
+# Tests
+fe-test-eigen/src/__test__/__snapshots__
