@@ -2,9 +2,8 @@ import { apiPath } from "../../config/apiPath"
 import { getRequest } from "../../services"
 import { IGetTopHeadlines } from "./interface"
 
-// const API_URL = import.meta.env.VITE_API_URL
 const API_URL = window.location.origin
-const SIZE_PER_PAGE = import.meta.env.VITE_SIZE_PER_PAGE
+const SIZE_PER_PAGE = process.env.VITE_SIZE_PER_PAGE
 
 export const getTopHeadlines = async ({
   page = 1,

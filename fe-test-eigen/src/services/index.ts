@@ -1,7 +1,7 @@
 import { IApiRequest } from "./interface"
 
-const API_KEY = import.meta.env.VITE_API_KEY
-const SIZE_PER_PAGE = import.meta.env.VITE_SIZE_PER_PAGE
+const API_KEY = process.env.VITE_API_KEY 
+const SIZE_PER_PAGE = Number(process.env.VITE_SIZE_PER_PAGE)
 
 export const apiRequest = async (params: IApiRequest) => {
   const {

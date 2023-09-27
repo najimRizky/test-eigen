@@ -68,7 +68,7 @@ const TopHeadlinesPage = () => {
           style={{ display: "flex", justifyContent: "center" }}
           current={response.metadata.page}
           total={response.metadata.totalElement}
-          pageSize={Number(import.meta.env.VITE_SIZE_PER_PAGE)}
+          pageSize={Number(process.env.VITE_SIZE_PER_PAGE)}
         />
       </Space>
     )

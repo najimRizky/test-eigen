@@ -2,7 +2,6 @@ import { getRequest } from "../../services"
 import { IUseGetRequest } from "./interface"
 import { useState, useEffect } from "react"
 
-// const API_URL = import.meta.env.VITE_API_URL
 const API_URL = window.location.origin
 
 const useGetRequest = ({ url, queryParams = {}, requiredParams = []}: IUseGetRequest) => {
