@@ -4,8 +4,8 @@
       "source": "/(.*)",
       "destination": "/"
     }, {
-      "source": "/api/:path",
-      "destination": "hhttps://newsapi.org/v2/:path"
+      "source": "/api/",
+      "destination": "https://newsapi.org/v2/:path"
     }
   ]
 }
