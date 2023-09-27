@@ -2,11 +2,10 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/",
-      "status": 200
+      "destination": "/"
     }, {
-      "source": "/api/(.*)",
-      "destination": "hhttps://newsapi.org/v2"
+      "source": "/api/:path",
+      "destination": "hhttps://newsapi.org/v2/:path"
     }
   ]
 }
